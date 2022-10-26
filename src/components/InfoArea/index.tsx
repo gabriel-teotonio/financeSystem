@@ -1,13 +1,16 @@
 import React from 'react'
 import { formatCurrentMonth } from '../../helpers/dateFilter'
+import { ResumeItem } from '../ResumeItem'
 import * as C from './style'
 
 type Props = {
     currentMonth: string
     onMonthChange: (newMonth:string) => void;
+    expense:number,
+    income:number
 }
 
-export const InfoArea = ({currentMonth,onMonthChange}:Props) => {
+export const InfoArea = ({currentMonth,onMonthChange, income, expense}:Props) => {
   
   const handlePrevMonth = () => {
     const [year, month] = currentMonth.split('-')
@@ -33,7 +36,13 @@ export const InfoArea = ({currentMonth,onMonthChange}:Props) => {
             <C.MonthIcon onClick={handleNextMonth}>➡️</C.MonthIcon>
         </C.MonthArea>
         <C.ResumeArea>
-
+            <ResumeItem title="Despesas" value={expense} />
+            <ResumeItem title="Receitas" value={income} />
+            <ResumeItem 
+              title="Balanço" 
+              value={income - expense}
+              color={(income - expense) < 0 ? 'Red': 'green'}
+            />
         </C.ResumeArea>
     </C.Container>
   )
