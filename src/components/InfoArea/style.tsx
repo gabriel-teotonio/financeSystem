@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 100%;
     background-color: white;
     padding: 1.2rem;
-    box-shadow: 0 0 6px #ccccccbb;
+    box-shadow: ${props => props.theme.boxShadow.primaryShadow};
     border-radius: 6px;
     margin-top: -2.4rem;
     display: flex;
