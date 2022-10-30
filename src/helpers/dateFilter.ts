@@ -37,3 +37,8 @@ export const formatCurrentMonth = (currentMonth:string):string => {
 
     return `${months[parseInt(month) - 1]} de ${year}`
 }
+
+export const newDateAjusted = (dateField:string) => {
+    const [year, month, day] = dateField.split('-')
+    return new Date(parseInt(year), parseInt(month) -1, parseInt(day))
+}

@@ -11,6 +11,8 @@ import { InputArea } from './components/InputArea'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components'
 
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css' ;
 
 function App() {
   const themes = {
@@ -21,6 +23,29 @@ function App() {
       primaryShadow:'0 0 6px #00009630',
     }
   }
+
+  const notifySuccess = () => toast.success('Criado com sucesso!', {
+    position: "top-right",
+    autoClose: 2500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  })
+
+  const notifyError = (erros:string) => toast.error(erros, {
+    position: "top-right",
+    autoClose: 3500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  })
+
   const [list, setList] = useState(items)
   const [filteredList, setFilteredList] = useState<Item[]>([])
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth())
@@ -47,6 +72,12 @@ function App() {
     setIncome(incomeCount)
   },[filteredList])
   
+  const handleAddItem = (item:Item) => {
+      const newList = [...list]
+      newList.push(item)
+      setList(newList)
+  }
+
   const handleMonthChange = (newMonth:string) => {
     setCurrentMonth(newMonth)
   }
@@ -64,12 +95,18 @@ function App() {
             expense={expense}
             />
               
-            <InputArea />
+            <InputArea 
+            onAdd={handleAddItem} 
+            notifySuccess={notifySuccess}
+            notifyError={notifyError}
+            />
+            {/* <button onClick={notifyError}>Notify</button> */}
             
             <TableArea list={filteredList}/>
           </C.Body>
 
           <GlobalStyle />
+          <ToastContainer />
         </C.Container>
       </ThemeProvider>
     )
