@@ -16,7 +16,7 @@ export const TableItem = ({item}:Props) => {
               {categories[item.category].title}
           </C.Category>
           </C.TableColumn>
-        <C.TableColumn>{item.title}</C.TableColumn>
+        <C.TableColumn width={120}>{item.title}</C.TableColumn>
         <C.TableColumn width={150}>
           <C.Value color={categories[item.category].expense ? '#ff4a4a' : '#00e76e'}>
               R$ {item.value}

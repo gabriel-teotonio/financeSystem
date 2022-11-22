@@ -7,6 +7,10 @@ export const Table = styled.table`
     box-shadow: ${props => props.theme.boxShadow.primaryShadow};
     border-radius: 6px;
     margin-top: 1.5rem;
+    
+    @media (max-width: 520px) {
+        font-size: .6rem;
+    }
 `
 export const TableHeadColumn = styled.th`
     text-align: left;

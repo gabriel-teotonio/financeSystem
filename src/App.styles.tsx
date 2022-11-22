@@ -16,4 +16,8 @@ export const Body = styled.section`
     margin: auto;
     max-width: 980px;
     margin-bottom: 3rem;
+
+    @media (max-width: 720px) {
+        padding: 0 10px;
+    }
 ` 

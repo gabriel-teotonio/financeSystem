@@ -9,6 +9,13 @@ export const Container = styled.div`
     margin-top: -2.4rem;
     display: flex;
     align-items: center;
+
+    @media (max-width: 520px) { 
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+        font-size: .8rem;
+        padding: 1.2rem .5rem;
+    }
 `
 
 export const MonthArea = styled.div`
@@ -29,4 +36,5 @@ export const MonthTitle = styled.div`
 export const ResumeArea = styled.div`
     flex: 2;
     display: flex;
+    gap: 2rem;
 `

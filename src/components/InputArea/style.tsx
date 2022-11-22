@@ -9,11 +9,23 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width:520px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `
 
 export const InputLabel = styled.label`
     flex: 1;
     margin: 10px;
+
+    @media (max-width: 520px) {
+        :last-child{
+            margin: 10px auto;
+            width: 100%;
+        }
+    }
 `   
 export const InputTitle = styled.div`
     font-weight: 600;
